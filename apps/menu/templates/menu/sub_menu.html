@@ -1,0 +1,38 @@
+{% extends 'menu/index.html' %}
+{% load static %}
+
+{% block title %}
+    Sub Menu | TZ Junior Python
+{% endblock %}
+
+{% block content %}
+
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="{% url "home" %}">Junior TZ</a>
+          <a class="navbar-brand ms-auto" href="{% url "home" %}"><span class="text-info">UP</span>TRADER</a>
+        <button class="navbar-toggler ms-auto" type="button" data-mdb-toggle="collapse"
+          data-mdb-target="#navbarToggleExternalContent3" aria-controls="navbarToggleExternalContent3"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+    <div class="collapse" id="navbarToggleExternalContent3">
+      <div class="bg-light shadow-3 p-4">
+          <a href="{% url "home" %}"><button class="btn btn-link btn-block border-bottom m-0 text-info">Home</button></a>
+          {% for i in menu %}
+              <a href="{% url "detail_menu" i.name %}"><button class="btn btn-link btn-block border-bottom m-0 text-info">{{ i.name }}</button></a>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="card mb-3 text-center" style="margin-top: 50px;">
+      <img class="card-img-top" src="{% static "menu/image/sub_menu.jpg" %}" alt="Card image cap" style="height: 450px">
+      <div class="card-body">
+        <h5 class="card-title"><span class="text-info">UP</span>TRADER</h5>
+        <p class="card-text"><small class="text-muted">sub menu {{ sub_menu }}</small></p>
+      </div>
+    </div>
+
+{% endblock %}
